@@ -18,16 +18,19 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.save
+    redirect_to(post_path(@post))
   end  
   
   def update
     @post = Post.find(params[:id])
     @post.update_attributes(params[:post])
+    redirect_to(post_path(@post))
   end
   
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    redirect_to(posts_path)
   end
   
 end

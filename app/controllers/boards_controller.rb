@@ -1,33 +1,36 @@
 class BoardsController < ApplicationController
   def index
-    @boards = Boards.all
+    @boards = Board.all
   end
   
   def show
-    @boards = Boards.find(params[:id])
+    @board = Board.find(params[:id])
   end
   
   def new
-    @boards = Boards.new
+    @board = Board.new
   end
   
   def edit
-    @boards = Boards.find(params[:id])
+    @board = Board.find(params[:id])
   end
   
   def create
-    @boards = Boards.new(params[:board])
-    @boards.save
+    @board = Board.new(params[:board])
+    @board.save
+    redirect_to(board_path(@board))
   end  
   
   def update
-    @boards = Boards.find(params[:id])
-    @boards.update_attributes(params[:board])
+    @board = Board.find(params[:id])
+    @board.update_attributes(params[:board])
+    redirect_to(board_path(@board))
   end
   
   def destroy
-    @boards = Boards.find(params[:id])
-    @boards.destroy
+    @board = Board.find(params[:id])
+    @board.destroy
+    redirect_to(boards_path)
   end
 
 end
