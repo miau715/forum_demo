@@ -18,7 +18,10 @@ ForumDemo::Application.routes.draw do
         resources :posts
       end
     end
-
+   
+    resources :boards do
+      resources :posts
+    end
   # Sample resource route with options:
   #   resources :products do
   #     member do

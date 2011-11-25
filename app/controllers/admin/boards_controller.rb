@@ -6,11 +6,6 @@ class Admin::BoardsController < ApplicationController
     @boards = Board.all
   end
   
-  def show
-    @board = Board.find(params[:id])
-    @posts = @board.posts.all
-  end
-  
   def new
     @board = Board.new
   end
@@ -21,14 +16,16 @@ class Admin::BoardsController < ApplicationController
   
   def create
     @board = Board.new(params[:board])
-    @board.save
-    redirect_to(board_path(@board))
+    if @board.save
+      redirect_to(board_path(@board), :notice => 'Board was successfully created.')
+    end
   end  
   
   def update
     @board = Board.find(params[:id])
-    @board.update_attributes(params[:board])
-    redirect_to(board_path(@board))
+    if @board.update_attributes(params[:board])
+      redirect_to(board_path(@board), :notice => 'Board was successfully updated.')
+    end
   end
   
   def destroy
@@ -36,5 +33,4 @@ class Admin::BoardsController < ApplicationController
     @board.destroy
     redirect_to(boards_path)
   end
-
 end
