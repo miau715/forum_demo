@@ -3,15 +3,15 @@
   <%= @board.name %>
 </p>
 
-<h1>Listing posts</h1>
+<h1>Listing posts - Total <%= @board.posts.size %> posts</h1>
 
 <table>
- <tr>
- <th>Title</th>
- <th>Content</th>
- <th></th>
- <th></th>
- <th></th>
+  <tr>
+  <th>Title</th>
+  <th>Content</th>
+  <th></th>
+  <th></th>
+  <th></th>
  </tr>
 
 <% @posts.each do |post| %>
@@ -26,7 +26,7 @@
  </tr>
 <% end %>
 </table>
-
+<%= will_paginate(@posts) %>
 <br />
 
 <%= link_to 'New Post', new_board_post_path(@board) %> |
