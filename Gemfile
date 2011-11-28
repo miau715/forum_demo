@@ -33,5 +33,6 @@ gem 'jquery-rails'
 
 gem "devise"
 gem "will_paginate"
+gem "paperclip"
 
 

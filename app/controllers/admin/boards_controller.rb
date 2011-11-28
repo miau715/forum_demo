@@ -1,10 +1,6 @@
 class Admin::BoardsController < ApplicationController
   layout 'admin'
   before_filter :require_is_admin
-
-  def index
-    @boards = Board.all
-  end
   
   def new
     @board = Board.new

@@ -26,7 +26,11 @@
   <td><%= l(post.updated_at, :format => :short) %></td>
   <td><%= link_to 'Show', board_post_path(@board,post) %></td>
   <% if current_user && post.user == current_user %>
-    <td><%= link_to 'A-Edit', edit_board_post_path(@board,post) %></td>
+    <td><%= link_to 'Edit', edit_board_post_path(@board,post) %></td>
+    <td><%= link_to 'Destroy', board_posts_path(@board,post), :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
+  <% if current_user && post.user != current_user && current_user.is_admin? %>
+    <td></td>
     <td><%= link_to 'A-Destroy', admin_board_posts_path(@board,post), :confirm => 'Are you sure?', :method => :delete %></td>
   <% end %>
  </tr>
